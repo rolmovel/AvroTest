@@ -13,16 +13,15 @@ import org.apache.hadoop.mapred.FileOutputFormat;
 import org.apache.hadoop.mapred.JobClient;
 import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.util.Tool;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.example.avroSample.model.Automobile;
 
 public class ModelNameCountApp extends Configured implements Tool {
 
-	private static final Logger LOGGER = LogManager
+	public static final Logger log = LoggerFactory
 			.getLogger(ModelNameCountApp.class);
-
+	
 	private static final String JOB_NAME = "ModelNameCountJob";
 
 	@Override
@@ -69,13 +68,13 @@ public class ModelNameCountApp extends Configured implements Tool {
 			result = new ModelNameCountApp().run(args);
 		} catch (Exception e) {
 			result = -1;
-			LOGGER.error("An error occurred while trying to run the example", e);
+			log.error("An error occurred while trying to run the example", e);
 		}
 
 		if (result == 0) {
-			LOGGER.info("SUCCESS");
+			log.info("SUCCESS");
 		} else {
-			LOGGER.fatal("FAILED");
+			log.error("FAILED");
 		}
 
 	}
