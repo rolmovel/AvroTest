@@ -61,6 +61,8 @@ public class ModelNameCountApp extends Configured implements Tool {
 		
 		new File(args[0]).mkdir();
 		new File(args[1]).mkdir();
+		
+		log.debug("Patametros: " +args[0] + "," + args[1]);
 
 		int result = 0;
 
